@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎓 Marks Calculator 🎓</h1>
+
+        <div class="form">
+            <input type="text" id="name" placeholder="Enter student name">
+            <button onclick="calculateMarks()">Calculate Percentage</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateMarks() {
+            const name = document.getElementById('name').value.trim();
+            const resultDiv = document.getElementById('result');
+
+            if(name === "") {
+                resultDiv.innerHTML = "Please enter a name!";
+                return;
+            }
+
+            // Random percentage
+            const percentage = Math.floor(Math.random() * 101);
+
+            // Classification
+            let classification = "";
+            if(percentage >= 75) {
+                classification = "Distinction 🎉";
+            } else if(percentage >= 60) {
+                classification = "First Class 🏆";
+            } else if(percentage >= 35) {
+                classification = "Pass ✅";
+            } else {
+                classification = "Fail ❌";
+            }
+
+            resultDiv.innerHTML = `
+                <p>Student: <strong>${name}</strong></p>
+                <p>Percentage: <strong>${percentage}%</strong></p>
+                <p>Result: <strong>${classification}</strong></p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
